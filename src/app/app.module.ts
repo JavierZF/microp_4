@@ -9,7 +9,9 @@ import { LibretaContactosPage }  from '../pages/libreta-contactos/libreta-contac
 import { AcercaDePage }  from   '../pages/acerca-de/acerca-de' ; 
 import { NuevoContactoPage }  from   '../pages/nuevo-contacto/nuevo-contacto' ;
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { SplashScreen } from '@ionic-native/splash-screen'; 
+import  { ContactService }  from   '../services/contact.service'; 
+import  {  Services  }  from   '@angular/core/src/view' ;
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ContactService
   ]
 })
 export class AppModule {}

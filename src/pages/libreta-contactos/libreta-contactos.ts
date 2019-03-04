@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NuevoContactoPage }  from   '../nuevo-contacto/nuevo-contacto' ;
+import { NuevoContactoPage }  from   '../nuevo-contacto/nuevo-contacto' ; 
+import  {  Contact  }  from   '../../models/contact.model' ;
+import  {  ContactService  }  from   '../../services/contact.service' ;
 
 /**
  * Generated class for the LibretaContactosPage page.
@@ -16,12 +18,19 @@ import { NuevoContactoPage }  from   '../nuevo-contacto/nuevo-contacto' ;
 })
 export class LibretaContactosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  contacts :  Contact [] =[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private ContactService :  ContactService) {
   }
+
+  ionViewWillEnter (){
+    this.contacts = this.ContactService.getContacts();
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LibretaContactosPage');
   }
-  onLoadContactosPage (){  this . navCtrl . push ( NuevoContactoPage );
+  onLoadContactosPage (){
+    this.navCtrl.push(NuevoContactoPage);
   }
 }
